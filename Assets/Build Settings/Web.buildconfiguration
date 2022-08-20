@@ -1,0 +1,36 @@
+{
+    "Show": true,
+    "Dependencies": [
+        "GlobalObjectId_V1-1-05cb6439ab84c1944b2debbae816b212-93214019566545601-0"
+    ],
+    "Components": [
+        {
+            "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
+            "$version": 1,
+            "Platform": "WebGL",
+            "Configuration": 2
+        },
+        {
+            "$type": "Unity.Build.Common.RunSettings, Unity.Build",
+            "RedirectOutput": false,
+            "BatchMode": false,
+            "NoGraphics": false,
+            "ExtraArguments": []
+        },
+        {
+            "$type": "Unity.Build.Common.OutputBuildDirectory, Unity.Build",
+            "OutputDirectory": "Builds/Web"
+        },
+        {
+            "$type": "Unity.Build.Common.SceneList, Unity.Build",
+            "$version": 1,
+            "BuildCurrentScene": false,
+            "SceneInfos": [
+                {
+                    "Scene": "GlobalObjectId_V1-1-d1c3109bdb54ad54c8a2b2838528e640-102900000-0",
+                    "AutoLoad": false
+                }
+            ]
+        }
+    ]
+}
