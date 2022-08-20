@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         set
         {
             balance = value;
-            HappinessChanged?.Invoke(balance);
+            BalanceChanged?.Invoke(balance);
         }
     }
     
