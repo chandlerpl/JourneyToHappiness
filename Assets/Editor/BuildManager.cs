@@ -9,26 +9,17 @@ public class BuildManager
     [MenuItem("Build/Build WebGL")]
     public static void PerformWebGLBuild()
     {
-        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-        List<string> scenes = new List<string>();
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
-        {
-            if (!scene.enabled) continue;
-            scenes.Add(scene.path);
-        }
-        
-        buildPlayerOptions.scenes = scenes.ToArray();
-        buildPlayerOptions.locationPathName = "build/WebGL";
-        buildPlayerOptions.target = BuildTarget.WebGL;
-        buildPlayerOptions.options = BuildOptions.None;
-
-        BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
-        CheckResult(report.summary);
+        Build("build/WebGL", BuildTarget.WebGL);
     }
     
     [MenuItem("Build/Build Windows")]
     public static void PerformWindowsBuild()
     {
+        Build("build/Windows/" + PlayerSettings.productName + ".exe", BuildTarget.StandaloneWindows64);
+    }
+
+    private static void Build(string path, BuildTarget target)
+    {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         List<string> scenes = new List<string>();
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
@@ -36,17 +27,14 @@ public class BuildManager
             if (!scene.enabled) continue;
             scenes.Add(scene.path);
         }
-        
-        buildPlayerOptions.locationPathName = "build/Windows/" + PlayerSettings.productName + ".exe";
-        buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
         buildPlayerOptions.options = BuildOptions.None;
+        buildPlayerOptions.locationPathName = path;
+        buildPlayerOptions.target = target;
         
+            
         BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
-        CheckResult(report.summary);
-    }
-
-    private static void CheckResult(BuildSummary summary)
-    {
+        BuildSummary summary = report.summary;
+        
         switch (summary.result)
         {
             case BuildResult.Succeeded:
