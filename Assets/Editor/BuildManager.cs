@@ -10,6 +10,14 @@ public class BuildManager
     public static void PerformWebGLBuild()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+        List<string> scenes = new List<string>();
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if (!scene.enabled) continue;
+            scenes.Add(scene.path);
+        }
+        
+        buildPlayerOptions.scenes = scenes.ToArray();
         buildPlayerOptions.locationPathName = "build/WebGL";
         buildPlayerOptions.target = BuildTarget.WebGL;
         buildPlayerOptions.options = BuildOptions.None;
@@ -22,10 +30,17 @@ public class BuildManager
     public static void PerformWindowsBuild()
     {
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
-        buildPlayerOptions.locationPathName = "build/Windows";
+        List<string> scenes = new List<string>();
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if (!scene.enabled) continue;
+            scenes.Add(scene.path);
+        }
+        
+        buildPlayerOptions.locationPathName = "build/Windows/" + PlayerSettings.productName + ".exe";
         buildPlayerOptions.target = BuildTarget.StandaloneWindows64;
         buildPlayerOptions.options = BuildOptions.None;
-
+        
         BuildReport report = BuildPipeline.BuildPlayer(buildPlayerOptions);
         CheckResult(report.summary);
     }
