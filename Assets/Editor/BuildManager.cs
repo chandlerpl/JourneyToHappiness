@@ -17,6 +17,12 @@ public class BuildManager
     {
         Build("build/Windows/" + PlayerSettings.productName + ".exe", BuildTarget.StandaloneWindows64);
     }
+    
+    [MenuItem("Build/Build Linux")]
+    public static void PerformLinuxBuild()
+    {
+        Build("build/Linux/" + PlayerSettings.productName + ".x86_64", BuildTarget.StandaloneLinux64);
+    }
 
     private static void Build(string path, BuildTarget target)
     {
