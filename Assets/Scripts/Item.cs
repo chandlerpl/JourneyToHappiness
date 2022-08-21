@@ -15,6 +15,7 @@ public class Item : MonoBehaviour
     public float cost;
     public float happinessChange;
     public float comfortChange;
+    public float billsChange;
 
     public List<GameObject> showObjects;
     public List<GameObject> hideObjects;
@@ -29,7 +30,11 @@ public class Item : MonoBehaviour
             GameManager.Instance.Comfort += comfortChange;
             GameManager.Instance.Happiness += happinessChange;
             GameManager.Instance.Balance -= cost;
-            purchasedItemSound.Play();
+            GameManager.Instance.Bills += billsChange;
+            if (purchasedItemSound != null)
+            {
+                purchasedItemSound.Play();
+            }
             foreach (GameObject obj in showObjects)
             {
                 
@@ -47,7 +52,10 @@ public class Item : MonoBehaviour
         }
         else
         {
-            noMoneySound.Play();
+            if (noMoneySound != null)
+            {
+                noMoneySound.Play();
+            }
             // Add something here if they don't have enough money? 
         }
     }

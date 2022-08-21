@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     public static event Action<float> HappinessChanged;
     public static event Action<float> ComfortChanged;
     public static event Action<float> BalanceChanged;
+    public static event Action<float> BillsChanged;
     public static event Action<int> CurrentDayChanged;
     
     [SerializeField]
     private float balance;
+    [SerializeField]
+    private float bills;
     [SerializeField]
     private float startingHappiness;
     [SerializeField]
@@ -62,6 +65,16 @@ public class GameManager : MonoBehaviour
             BalanceChanged?.Invoke(balance);
         }
     }
+
+    public float Bills
+    {
+        get => bills;
+        set
+        {
+            bills = value;
+            BillsChanged?.Invoke(bills);
+        }
+    }
     
     public float MaxHappiness { get => maxHappiness; }
     
@@ -98,5 +111,6 @@ public class GameManager : MonoBehaviour
     public void AdvanceDay()
     {
         CurrentDay += 1;
+        Balance -= Bills;
     }
 }
