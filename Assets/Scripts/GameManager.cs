@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public static event Action<float> BalanceChanged;
     public static event Action<float> BillsChanged;
     public static event Action<int> CurrentDayChanged;
+    
+    [SerializeField]
+    private float maxDays = 30;
     
     [SerializeField]
     private float balance;
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        DontDestroyOnLoad(gameObject);
         _instance = this;
         StartCoroutine(SetStartingValues());
     }
@@ -112,5 +117,16 @@ public class GameManager : MonoBehaviour
     {
         CurrentDay += 1;
         Balance -= Bills;
+
+        if (CurrentDay > maxDays)
+        {
+            SceneManager.LoadScene(2);
+        }
+    }
+
+    public void Reset()
+    {
+        Destroy(gameObject);
+        _instance = null;
     }
 }
