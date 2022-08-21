@@ -22,22 +22,29 @@ public class Item : MonoBehaviour
     
     public void Purchase()
     {
-        GameManager.Instance.Comfort += comfortChange;
-        GameManager.Instance.Happiness += happinessChange;
-        GameManager.Instance.Balance -= cost;
+        if (GameManager.Instance.Balance - cost > 0)
+        {
+            GameManager.Instance.Comfort += comfortChange;
+            GameManager.Instance.Happiness += happinessChange;
+            GameManager.Instance.Balance -= cost;
 
-        foreach (GameObject obj in showObjects)
-        {
-            obj.SetActive(true);
-        }
-        foreach (GameObject obj in hideObjects)
-        {
-            obj.SetActive(false);
-        }
+            foreach (GameObject obj in showObjects)
+            {
+                obj.SetActive(true);
+            }
+            foreach (GameObject obj in hideObjects)
+            {
+                obj.SetActive(false);
+            }
 
-        if (advanceCurrentDay)
+            if (advanceCurrentDay)
+            {
+                GameManager.Instance.AdvanceDay();
+            }
+        }
+        else
         {
-            GameManager.Instance.AdvanceDay();
+            // Add something here if they don't have enough money? 
         }
     }
 }
