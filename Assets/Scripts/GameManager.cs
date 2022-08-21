@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +32,22 @@ public class GameManager : MonoBehaviour
     private float maxHappiness;
     [SerializeField]
     private float maxComfort;
+    
+    [Header("Romance Section")]
+    [SerializeField]
+    private float minimumStartDay = 5;
+    [SerializeField]
+    private float dailyChance = 0.1f;
+    [SerializeField]
+    private float costToGoOut = 25f;
+    [SerializeField]
+    private float happinessIncrease = 5f;
+    [SerializeField] 
+    private GameObject meetCoworker;
+    [SerializeField] 
+    private StarterAssetsInputs input;
+    private bool _hadChanceToMeet = false;
+    private bool _hasMet = false;
     
     private float _happiness;
     private float _comfort;
@@ -80,6 +98,11 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public bool HasMet
+    {
+        get => _hasMet;
+    }
+    
     public float MaxHappiness { get => maxHappiness; }
     
     public float MaxComfort { get => maxComfort; }
@@ -118,6 +141,18 @@ public class GameManager : MonoBehaviour
         CurrentDay += 1;
         Balance -= Bills;
 
+        if (!_hadChanceToMeet && CurrentDay > minimumStartDay)
+        {
+            float val = Random.Range(0f, 1f);
+            if (val < dailyChance)
+            {
+                _hadChanceToMeet = true;
+                meetCoworker.SetActive(true);
+                Time.timeScale = 0f;
+                input.UnlockMouse(false);
+            }
+        }
+        
         if (CurrentDay > maxDays)
         {
             SceneManager.LoadScene(2);
@@ -128,5 +163,18 @@ public class GameManager : MonoBehaviour
     {
         Destroy(gameObject);
         _instance = null;
+    }
+
+    public void MeetCoworker(bool yes)
+    {
+        if (yes)
+        {
+            _hasMet = true;
+        }
+        meetCoworker.SetActive(false);
+        Time.timeScale = 1f;
+        input.UnlockMouse(true);
+        Happiness += happinessIncrease;
+        Balance -= costToGoOut;
     }
 }
