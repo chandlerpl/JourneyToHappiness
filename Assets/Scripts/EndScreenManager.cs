@@ -8,6 +8,7 @@ public class EndScreenManager : MonoBehaviour
     public float winHappiness = 60;
     public GameObject winCondition;
     public GameObject loseCondition;
+    public GameObject metCoworker;
 
     public TextMeshProUGUI happinessLevel;
     public TextMeshProUGUI comfortLevel;
@@ -22,6 +23,11 @@ public class EndScreenManager : MonoBehaviour
         else
         {
             loseCondition.SetActive(true);
+        }
+
+        if (GameManager.Instance.HasMet)
+        {
+            metCoworker.SetActive(true);
         }
 
         happinessLevel.text = GameManager.Instance.Happiness + "";

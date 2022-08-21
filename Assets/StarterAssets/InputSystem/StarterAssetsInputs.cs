@@ -66,6 +66,12 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
+		public void UnlockMouse(bool newState)
+		{
+			cursorLocked = newState;
+			SetCursorState(cursorLocked);
+		}
+		
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
