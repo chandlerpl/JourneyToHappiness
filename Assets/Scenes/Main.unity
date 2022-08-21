@@ -4795,6 +4795,7 @@ MonoBehaviour:
   cost: 30
   happinessChange: 3
   comfortChange: 0
+  billsChange: 0
   showObjects:
   - {fileID: 782298185}
   hideObjects:
@@ -5556,7 +5557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78e964730a05a94097d95ed2d8775c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxDays: 30
   balance: 100
+  bills: 0
   startingHappiness: 0
   startingComfort: 1
   maxHappiness: 100
@@ -13310,6 +13313,7 @@ MonoBehaviour:
   cost: 0
   happinessChange: 0
   comfortChange: 0
+  billsChange: 0
   showObjects:
   - {fileID: 1068720825}
   hideObjects:
@@ -16012,6 +16016,7 @@ MonoBehaviour:
   cost: -300
   happinessChange: 0
   comfortChange: 0
+  billsChange: 0
   showObjects: []
   hideObjects: []
   advanceCurrentDay: 1
