@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float balance;
     [SerializeField]
-    private float startingHapiness;
+    private float startingHappiness;
     [SerializeField]
     private float startingComfort;
     [SerializeField]
-    private float maxHapiness;
+    private float maxHappiness;
     [SerializeField]
     private float maxComfort;
     
@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
         set
         {
             _happiness = value;
-            if (_happiness > maxHapiness)
-                _happiness = maxHapiness;
+            if (_happiness > maxHappiness)
+                _happiness = maxHappiness;
             HappinessChanged?.Invoke(_happiness);
         }
     }
@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public float MaxHappiness { get => maxHappiness; }
+    
+    public float MaxComfort { get => maxComfort; }
+    
     private void Start()
     {
         if (_instance != null)
@@ -75,7 +79,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator SetStartingValues()
     {
         yield return new WaitForFixedUpdate();
-        Happiness = startingHapiness;
+        Happiness = startingHappiness;
         Comfort = startingComfort;
     }
 
