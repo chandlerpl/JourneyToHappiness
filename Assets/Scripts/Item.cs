@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+    
+    public string purchaseCost;
+    
     [Tooltip("The amount of money an item costs. Negative values will increase the players Balance.")]
     public float cost;
     public float happinessChange;

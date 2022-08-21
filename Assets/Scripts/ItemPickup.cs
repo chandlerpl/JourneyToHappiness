@@ -1,15 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ItemPickup : MonoBehaviour
 {
+
+    public TextMeshProUGUI purchaseTextHolder;
+    public GameObject purchaseText;
+    
     private Item _currentItem;
     [SerializeField] InputActionAsset m_Actions;
     private void Start()
     {
+        purchaseText.SetActive(false);
+        
         InputAction action = m_Actions.FindAction("Interact", false);
         if (action != null)
         {
@@ -40,6 +47,7 @@ public class ItemPickup : MonoBehaviour
     {
         if (_currentItem != null)
         {
+            purchaseText.SetActive(false);
             _currentItem.Purchase();
         }
     }
@@ -48,7 +56,10 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            purchaseText.SetActive(true);
             _currentItem = other.gameObject.GetComponent<Item>();
+            purchaseTextHolder.text = _currentItem.purchaseCost;
+
         }
     }
 
@@ -56,6 +67,7 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+            purchaseText.SetActive(false);
             _currentItem = null;
         }
     }
