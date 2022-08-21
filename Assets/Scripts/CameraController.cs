@@ -26,8 +26,6 @@ public class CameraController : MonoBehaviour
         
         transform.position = cameraPositions[_currentPosition].position;
         transform.rotation = cameraPositions[_currentPosition].rotation;
-
-        MoveLeft();
     }
 
     public void MoveRight()

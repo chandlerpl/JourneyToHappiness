@@ -7,15 +7,24 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
-
+    
     public static event Action<float> HappinessChanged;
     public static event Action<float> ComfortChanged;
     public static event Action<float> BalanceChanged;
     
-    private float _happiness;
-    private float _comfort;
     [SerializeField]
     private float balance;
+    [SerializeField]
+    private float startingHapiness;
+    [SerializeField]
+    private float startingComfort;
+    [SerializeField]
+    private float maxHapiness;
+    [SerializeField]
+    private float maxComfort;
+    
+    private float _happiness;
+    private float _comfort;
 
     public float Happiness
     {
@@ -23,6 +32,8 @@ public class GameManager : MonoBehaviour
         set
         {
             _happiness = value;
+            if (_happiness > maxHapiness)
+                _happiness = maxHapiness;
             HappinessChanged?.Invoke(_happiness);
         }
     }
@@ -33,6 +44,8 @@ public class GameManager : MonoBehaviour
         set
         {
             _comfort = value;
+            if (_comfort > maxComfort)
+                _comfort = maxComfort;
             ComfortChanged?.Invoke(_comfort);
         }
     }
@@ -56,5 +69,18 @@ public class GameManager : MonoBehaviour
         }
 
         _instance = this;
+        StartCoroutine(SetStartingValues());
+    }
+
+    private IEnumerator SetStartingValues()
+    {
+        yield return new WaitForFixedUpdate();
+        Happiness = startingHapiness;
+        Comfort = startingComfort;
+    }
+
+    public void AdvanceDay()
+    {
+        
     }
 }
