@@ -33,6 +33,7 @@ public class BuildManager
             if (!scene.enabled) continue;
             scenes.Add(scene.path);
         }
+        buildPlayerOptions.scenes = scenes.ToArray();
         buildPlayerOptions.options = BuildOptions.None;
         buildPlayerOptions.locationPathName = path;
         buildPlayerOptions.target = target;
