@@ -10,12 +10,14 @@ public class UIUpdater : MonoBehaviour
     public TextMeshProUGUI happinessText;
     public TextMeshProUGUI comfortText;
     public TextMeshProUGUI day;
+    public TextMeshProUGUI bills;
     private void Start()
     {
         GameManager.ComfortChanged += comfort => { comfortText.text = comfort.ToString(); };
         GameManager.HappinessChanged += happiness => { happinessText.text = happiness.ToString(); };
         GameManager.BalanceChanged += balance => { moneyText.text = balance.ToString(); };
         GameManager.CurrentDayChanged += newDay => { day.text = newDay.ToString(); };
+        GameManager.BillsChanged += newDay => { bills.text = newDay.ToString(); };
         
         
     }
