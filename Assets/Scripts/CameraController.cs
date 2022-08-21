@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
     public Transform[] cameraPositions;
     public float secondsToMove = 1;
     private int _currentPosition;
-    
+
+    private bool _isMoving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class CameraController : MonoBehaviour
 
     public void MoveRight()
     {
+        if (_isMoving) return;
         if (++_currentPosition >= cameraPositions.Length)
         {
             _currentPosition = 0;
@@ -40,6 +42,7 @@ public class CameraController : MonoBehaviour
 
     private IEnumerator Move(Transform newPos)
     {
+        _isMoving = true;
         Vector3 startPos = transform.position;
         Quaternion startRot = transform.rotation;
         
@@ -55,10 +58,12 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, endPos, time);
             transform.rotation = Quaternion.Lerp(startRot, endRot, time);
         }
+        _isMoving = false;
     }
 
     public void MoveLeft()
     {
+        if (_isMoving) return;
         if (--_currentPosition < 0)
         {
             _currentPosition = cameraPositions.Length - 1;

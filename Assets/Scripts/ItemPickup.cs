@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class ItemPickup : MonoBehaviour
 {
-    private GameObject currentItem;
+    private Item _currentItem;
     [SerializeField] InputActionAsset m_Actions;
     private void Start()
     {
@@ -15,13 +15,32 @@ public class ItemPickup : MonoBehaviour
         {
             action.performed += PurchaseCurrent;
         }
+        
+        action = m_Actions.FindAction("CameraControl", false);
+        if (action != null)
+        {
+            action.performed += RotateCamera;
+        }
     }
 
+    private void RotateCamera(InputAction.CallbackContext context)
+    {
+        float val = context.ReadValue<float>();
+        if (val < 0)
+        {
+            CameraController.Instance.MoveLeft();
+        }
+        else
+        {
+            CameraController.Instance.MoveRight();
+        }
+    }
+    
     private void PurchaseCurrent(InputAction.CallbackContext context)
     {
-        if (currentItem != null)
+        if (_currentItem != null)
         {
-            currentItem.GetComponent<Item>().Purchase();
+            _currentItem.Purchase();
         }
     }
     
@@ -29,7 +48,7 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            currentItem = other.gameObject;
+            _currentItem = other.gameObject.GetComponent<Item>();
         }
     }
 
@@ -37,7 +56,7 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            currentItem = null;
+            _currentItem = null;
         }
     }
 }
