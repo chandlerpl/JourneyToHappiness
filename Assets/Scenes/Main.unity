@@ -1784,6 +1784,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e8557d3e3beeed44a955cb3266e32f57, type: 3}
   m_PrefabInstance: {fileID: 1104356276}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &220151502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
+  m_PrefabInstance: {fileID: 1884465508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &225453209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5839,14 +5844,14 @@ MonoBehaviour:
   maxDays: 30
   balance: 1000
   bills: 20
-  startingHappiness: 0
-  startingComfort: 1
+  startingHappiness: 30
+  startingComfort: 15
   maxHappiness: 100
   maxComfort: 100
   minimumStartDay: 5
   dailyChance: 0.1
   costToGoOut: 25
-  happinessIncrease: 5
+  happinessIncrease: 15
   meetCoworker: {fileID: 1782124112}
   input: {fileID: 488358151}
 --- !u!4 &629531321
@@ -6326,6 +6331,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 369a867b649ea1c4c9b2e3c1880e0dfd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
 --- !u!1001 &678492190
@@ -8001,6 +8010,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 836b7d0e34882144389d8f4b0d97488a, type: 3}
   m_PrefabInstance: {fileID: 910828096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &922875334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
+  m_PrefabInstance: {fileID: 202599040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &923073841 stripped
 GameObject:
@@ -9798,7 +9812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856058685639267096, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
@@ -10570,6 +10584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d6dc43136e43b34c85e510d5760b1f3, type: 3}
+--- !u!1 &1264171576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
+  m_PrefabInstance: {fileID: 19484331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1266309532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10775,6 +10794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e802598f483ce44bb079dfc34f9c1dc, type: 3}
+--- !u!1 &1293927693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
+  m_PrefabInstance: {fileID: 461279163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1294439471 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 602a1996aa8a5ba4fb66cb3d887d7bbe, type: 3}
@@ -11533,6 +11557,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: cost
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: billsChange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: purchaseCost
+      value: Food? 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: comfortChange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: happinessChange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: showObjects.Array.data[0]
       value: 
@@ -13382,6 +13426,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8001616320750332228, guid: 5d507c7cbc8d6824a8e8bde2ccd6d5b9, type: 3}
+--- !u!1 &1565880517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
+  m_PrefabInstance: {fileID: 2043802794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1575055477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16962,7 +17011,7 @@ PrefabInstance:
       objectReference: {fileID: 1756074443}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: hideObjects.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: showObjects.Array.size
@@ -16972,6 +17021,18 @@ PrefabInstance:
       propertyPath: hideObjects.Array.data[1]
       value: 
       objectReference: {fileID: 450742555}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1264171576}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 220151502}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 1565880517}
     - target: {fileID: 6083885496993499554, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -17469,8 +17530,8 @@ MonoBehaviour:
   noMoneySound: {fileID: 0}
   purchaseCost: 
   cost: -300
-  happinessChange: 0
-  comfortChange: 0
+  happinessChange: -10
+  comfortChange: -5
   billsChange: 0
   showObjects: []
   hideObjects: []
@@ -19303,6 +19364,18 @@ PrefabInstance:
       propertyPath: purchasedItemSound
       value: 
       objectReference: {fileID: 1756074443}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 922875334}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: hideObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1293927693}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: showObjects.Array.data[0]
       value: 
