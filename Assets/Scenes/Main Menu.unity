@@ -3687,6 +3687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f677c575fecd44f8137fbe59c10012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchasedItemSound: {fileID: 0}
+  noMoneySound: {fileID: 0}
   purchaseCost: FSDFSDF
   cost: 0
   happinessChange: 0
@@ -7939,6 +7941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f677c575fecd44f8137fbe59c10012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchasedItemSound: {fileID: 0}
+  noMoneySound: {fileID: 0}
   purchaseCost: sdfsdfsdfs
   cost: 5
   happinessChange: 5
@@ -12941,7 +12945,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1857329412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dcd543a184d66b4781c2a843cf1f52e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7770b1764951470abc9242090e59f6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1859659892
@@ -13660,6 +13664,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f677c575fecd44f8137fbe59c10012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchasedItemSound: {fileID: 0}
+  noMoneySound: {fileID: 0}
   purchaseCost: 
   cost: -300
   happinessChange: 0
