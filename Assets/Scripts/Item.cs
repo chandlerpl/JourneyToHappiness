@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    
+    public AudioSource purchasedItemSound;
+    public AudioSource noMoneySound;
     public string purchaseCost;
     
     [Tooltip("The amount of money an item costs. Negative values will increase the players Balance.")]
@@ -24,12 +25,14 @@ public class Item : MonoBehaviour
     {
         if (GameManager.Instance.Balance - cost > 0)
         {
+           
             GameManager.Instance.Comfort += comfortChange;
             GameManager.Instance.Happiness += happinessChange;
             GameManager.Instance.Balance -= cost;
-
+            purchasedItemSound.Play();
             foreach (GameObject obj in showObjects)
             {
+                
                 obj.SetActive(true);
             }
             foreach (GameObject obj in hideObjects)
@@ -44,6 +47,7 @@ public class Item : MonoBehaviour
         }
         else
         {
+            noMoneySound.Play();
             // Add something here if they don't have enough money? 
         }
     }
