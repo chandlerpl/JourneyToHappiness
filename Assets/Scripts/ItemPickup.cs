@@ -7,32 +7,58 @@ using UnityEngine.InputSystem;
 
 public class ItemPickup : MonoBehaviour
 {
-
+    public PlayerInput input;
     public TextMeshProUGUI purchaseTextHolder;
     public GameObject purchaseText;
     
     private Item _currentItem;
-    [SerializeField] InputActionAsset m_Actions;
     private void Start()
     {
         purchaseText.SetActive(false);
         
-        InputAction action = m_Actions.FindAction("Interact", false);
+        GameManager.Instance.MouseInput.UnlockMouse(false);
+/*
+        InputActionMap map = input.currentActionMap;
+        //InputActionMap map = InputManager.Instance.Controls.FindActionMap("Player");
+        InputAction action = map.FindAction("Interact", false);
         if (action != null)
         {
             action.performed += PurchaseCurrent;
         }
         
-        action = m_Actions.FindAction("CameraControl", false);
+        action = map.FindAction("CameraControl", false);
         if (action != null)
         {
             action.performed += RotateCamera;
         }
+        
+        action = map.FindAction("Pause", false);
+        if (action != null)
+        {
+            action.performed += PauseGame;
+        }
+
+        map = input.actions.FindActionMap("UI");
+        action = map.FindAction("Pause", false);
+        if (action != null)
+        {
+            action.performed += ResumeGame;
+        }*/
     }
 
-    private void RotateCamera(InputAction.CallbackContext context)
+    public void OnPause()
     {
-        float val = context.ReadValue<float>();
+        GameManager.Instance.PauseGame(true);
+    }
+
+    public void OnResume()
+    {
+        GameManager.Instance.ResumeGame();
+    }
+    
+    public void OnCameraControl(InputValue context)
+    {
+        float val = context.Get<float>();
         if (val < 0)
         {
             CameraController.Instance.MoveLeft();
@@ -43,13 +69,18 @@ public class ItemPickup : MonoBehaviour
         }
     }
     
-    private void PurchaseCurrent(InputAction.CallbackContext context)
+    public void OnInteract()
     {
-        if (_currentItem != null)
+        if (_currentItem == null)
+            return;
+        if (!_currentItem.gameObject.activeSelf)
         {
-            purchaseText.SetActive(false);
-            _currentItem.Purchase();
+            _currentItem = null;
+            return;
         }
+        
+        purchaseText.SetActive(false);
+        _currentItem.Purchase();
     }
     
     private void OnTriggerEnter(Collider other)

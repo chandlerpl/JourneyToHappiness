@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -10,13 +11,30 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
-    
+
     public static event Action<float> HappinessChanged;
     public static event Action<float> ComfortChanged;
     public static event Action<float> BalanceChanged;
     public static event Action<float> BillsChanged;
     public static event Action<int> CurrentDayChanged;
+
+    [Header("Player Input")]
+    [SerializeField]
+    private PlayerInput input;
+    [SerializeField] 
+    private StarterAssetsInputs mouseInput;
     
+    public PlayerInput PlayerInput { get => input; }
+    
+    public StarterAssetsInputs MouseInput { get => mouseInput; }
+    
+    [Header("Pause Menu")]
+    [SerializeField] 
+    private GameObject pauseMenu;
+    [SerializeField] 
+    private GameObject gameUI;
+
+    [Header("Gameplay Settings")]
     [SerializeField]
     private float maxDays = 30;
     
@@ -44,8 +62,6 @@ public class GameManager : MonoBehaviour
     private float happinessIncrease = 5f;
     [SerializeField] 
     private GameObject meetCoworker;
-    [SerializeField] 
-    private StarterAssetsInputs input;
     private bool _hadChanceToMeet = false;
     private bool _hasMet = false;
     
@@ -116,7 +132,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private void Start()
+    private void Awake()
     {
         if (_instance != null)
         {
@@ -148,8 +164,7 @@ public class GameManager : MonoBehaviour
             {
                 _hadChanceToMeet = true;
                 meetCoworker.SetActive(true);
-                Time.timeScale = 0f;
-                input.UnlockMouse(false);
+                PauseGame(false);
             }
         }
         
@@ -159,12 +174,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void PauseGame(bool showMenu)
     {
-        Destroy(gameObject);
-        _instance = null;
+        Time.timeScale = 0f;
+        mouseInput.UnlockMouse(false);
+        input.SwitchCurrentActionMap("UI");
+
+        //InputManager.Instance.SwitchMap("UI");
+        
+        if (showMenu)
+        {
+            pauseMenu.SetActive(true);
+            gameUI.SetActive(false);
+        }
     }
 
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        mouseInput.UnlockMouse(true);
+        input.SwitchCurrentActionMap("Player");
+        pauseMenu.SetActive(false);
+        gameUI.SetActive(true);
+    }
+    
     public void MeetCoworker(bool yes)
     {
         if (yes)
@@ -172,9 +205,17 @@ public class GameManager : MonoBehaviour
             _hasMet = true;
         }
         meetCoworker.SetActive(false);
-        Time.timeScale = 1f;
-        input.UnlockMouse(true);
+        ResumeGame();
         Happiness += happinessIncrease;
         Balance -= costToGoOut;
+    }
+    
+    public static void Reset()
+    {
+        if (Instance != null)
+        {
+            Destroy(Instance.gameObject);
+            _instance = null;
+        }
     }
 }
