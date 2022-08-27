@@ -1,12 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using TMPro;
-using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
