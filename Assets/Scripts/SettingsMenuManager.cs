@@ -63,6 +63,7 @@ public class SettingsMenuManager : MonoBehaviour
         SettingsManager.Instance.MusicVolume = musicVolume.value;
     }
 
+    private Dictionary<string, Resolution> resolutions = new Dictionary<string, Resolution>();
     public void OnDisplaySelected()
     {
         controlsPanel.SetActive(false);
@@ -80,9 +81,11 @@ public class SettingsMenuManager : MonoBehaviour
             StartCoroutine(TargetDisplay(i));
         });
         resolutionOptions.options.Clear();
+        
         foreach(Resolution res in Screen.resolutions)
         {
-            resolutionOptions.options.Add(new TMP_Dropdown.OptionData(res.width + "x" + res.height));
+            resolutions.Add(res.ToString(), res);
+            resolutionOptions.options.Add(new TMP_Dropdown.OptionData(res.ToString()));
         }
         resolutionOptions.onValueChanged.AddListener(i =>
         {
