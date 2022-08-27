@@ -244,6 +244,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 687322795}
     m_Modifications:
+    - target: {fileID: 7134435906220224023, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134435906220224023, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134435906220224023, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134435906220224023, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8186147048995898642, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
       propertyPath: m_Name
       value: Settings
@@ -332,11 +348,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8186147048995898646, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: defaultSelectedButton
+      value: 
+      objectReference: {fileID: 868199804}
+    - target: {fileID: 9153606468150363304, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153606468150363304, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153606468150363304, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9153606468150363304, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
 --- !u!224 &868199803 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8186147048995898643, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
+  m_PrefabInstance: {fileID: 868199802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &868199804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8186147048114455018, guid: 8c2ad109f8b6df040b4c035c0a0a1078, type: 3}
   m_PrefabInstance: {fileID: 868199802}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &920615597

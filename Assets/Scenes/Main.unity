@@ -6309,6 +6309,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 488358154}
   mouseInput: {fileID: 488358151}
+  autoSelectButtonSchemes:
+  - Gamepad
+  - Xbox Controller
+  - PS4 Controller
   pauseMenu: {fileID: 31157584}
   gameUI: {fileID: 675165504}
   maxDays: 30

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private PlayerInput input;
     [SerializeField] 
     private StarterAssetsInputs mouseInput;
+    [SerializeField] private List<string> autoSelectButtonSchemes;
     
     public PlayerInput PlayerInput { get => input; }
     
@@ -208,6 +210,12 @@ public class GameManager : MonoBehaviour
         ResumeGame();
         Happiness += happinessIncrease;
         Balance -= costToGoOut;
+    }
+
+    public bool CheckControlScheme([CanBeNull] string deviceName = null)
+    {
+        deviceName ??= PlayerInput.currentControlScheme;
+        return autoSelectButtonSchemes.Contains(deviceName);
     }
     
     public static void Reset()

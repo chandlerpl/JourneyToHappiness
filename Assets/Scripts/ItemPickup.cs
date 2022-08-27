@@ -16,7 +16,9 @@ public class ItemPickup : MonoBehaviour
     {
         purchaseText.SetActive(false);
         
-        GameManager.Instance.MouseInput.UnlockMouse(false);
+        Time.timeScale = 1f;
+        GameManager.Instance.PlayerInput.SwitchCurrentActionMap("Player");
+        GameManager.Instance.MouseInput.UnlockMouse(true);
 /*
         InputActionMap map = input.currentActionMap;
         //InputActionMap map = InputManager.Instance.Controls.FindActionMap("Player");

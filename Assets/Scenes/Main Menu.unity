@@ -2196,6 +2196,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 705658bb455f5f7479fa5c025f9faa03, type: 3}
   m_PrefabInstance: {fileID: 2041378667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &317688916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 317688918}
+  - component: {fileID: 317688917}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &317688917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317688916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78e964730a05a94097d95ed2d8775c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 215088418}
+  mouseInput: {fileID: 0}
+  autoSelectButtonSchemes:
+  - Gamepad
+  - PS4 Controller
+  - Xbox Controller
+  pauseMenu: {fileID: 0}
+  gameUI: {fileID: 0}
+  maxDays: 30
+  balance: 0
+  bills: 0
+  startingHappiness: 0
+  startingComfort: 0
+  maxHappiness: 0
+  maxComfort: 0
+  minimumStartDay: 5
+  dailyChance: 0.1
+  costToGoOut: 25
+  happinessIncrease: 5
+  meetCoworker: {fileID: 0}
+--- !u!4 &317688918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317688916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 758.71765, y: 454.37238, z: -90.87213}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &332461706
 GameObject:
   m_ObjectHideFlags: 0
