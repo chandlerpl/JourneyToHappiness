@@ -87,7 +87,7 @@ public class SettingsMenuManager : MonoBehaviour
         resolutionOptions.onValueChanged.AddListener(i =>
         {
             Resolution res = Screen.resolutions[i];
-            Screen.SetResolution(res.height, res.width, Screen.fullScreenMode);
+            Screen.SetResolution(res.width, res.height, Screen.fullScreenMode);
         });
         
         displayPanel.SetActive(true);
