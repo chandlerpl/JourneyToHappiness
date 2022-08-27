@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using TMPro;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -63,7 +65,6 @@ public class SettingsMenuManager : MonoBehaviour
         SettingsManager.Instance.MusicVolume = musicVolume.value;
     }
 
-    private Dictionary<string, Resolution> resolutions = new Dictionary<string, Resolution>();
     public void OnDisplaySelected()
     {
         controlsPanel.SetActive(false);
@@ -80,17 +81,22 @@ public class SettingsMenuManager : MonoBehaviour
         {
             StartCoroutine(TargetDisplay(i));
         });
-        resolutionOptions.options.Clear();
+        displayOptions.value = PlayerPrefs.GetInt("UnitySelectMonitor");
         
+        resolutionOptions.options.Clear();
         foreach(Resolution res in Screen.resolutions)
         {
-            resolutions.Add(res.ToString(), res);
             resolutionOptions.options.Add(new TMP_Dropdown.OptionData(res.ToString()));
+
+            if (Screen.currentResolution.ToString().Equals(res.ToString()))
+            {
+                resolutionOptions.value = resolutionOptions.options.Count - 1;
+            }
         }
         resolutionOptions.onValueChanged.AddListener(i =>
         {
             Resolution res = Screen.resolutions[i];
-            Screen.SetResolution(res.width, res.height, Screen.fullScreenMode);
+            Screen.SetResolution(res.width, res.height, Screen.fullScreenMode, res.refreshRate);
         });
         
         displayPanel.SetActive(true);
@@ -101,16 +107,17 @@ public class SettingsMenuManager : MonoBehaviour
         // Get the current screen resolution.
         int screenWidth = Screen.width;
         int screenHeight = Screen.height;
+        int refreshRate = Screen.currentResolution.refreshRate;
  
         // Set the target display and a low resolution.
         PlayerPrefs.SetInt("UnitySelectMonitor", targetDisplay);
-        Screen.SetResolution(800, 600, Screen.fullScreen);
+        Screen.SetResolution(800, 600, Screen.fullScreenMode, refreshRate);
 
         // Wait a frame.
         yield return null;
  
         // Restore resolution.
-        Screen.SetResolution(screenWidth, screenHeight, Screen.fullScreen);
+        Screen.SetResolution(screenWidth, screenHeight, Screen.fullScreenMode, refreshRate);
     }
     
     public void OnGraphicsSelected()
