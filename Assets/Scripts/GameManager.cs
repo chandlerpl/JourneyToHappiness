@@ -138,8 +138,9 @@ public class GameManager : MonoBehaviour
     {
         if (_instance != null)
         {
-            this.enabled = false;
-            return;
+            Destroy(_instance.gameObject);
+            //this.enabled = false;
+            //return;
         }
 
         DontDestroyOnLoad(gameObject);
