@@ -1375,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -5601,8 +5601,8 @@ MonoBehaviour:
   purchaseCost: "Vintage TV? \xA3100"
   cost: 100
   happinessChange: 5
-  comfortChange: 1
-  billsChange: 10
+  comfortChange: 2
+  billsChange: 5
   showObjects:
   - {fileID: 782298185}
   hideObjects:
@@ -5981,7 +5981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -8687,7 +8687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: billsChange
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: purchaseCost
@@ -9777,7 +9777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -13416,7 +13416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -16171,7 +16171,7 @@ MonoBehaviour:
   cost: 500
   happinessChange: 20
   comfortChange: 5
-  billsChange: 40
+  billsChange: 20
   showObjects:
   - {fileID: 1068720825}
   hideObjects:
@@ -17685,7 +17685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -20940,7 +20940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: comfortChange
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
@@ -21689,6 +21689,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1991080274, guid: 277569763cca7154a85ed2cbc05a90c1, type: 3}
+      propertyPath: comfortChange
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1991080274, guid: 277569763cca7154a85ed2cbc05a90c1, type: 3}
       propertyPath: purchasedItemSound
       value: 
@@ -22894,6 +22898,10 @@ PrefabInstance:
       value: TV Cabinet? 30
       objectReference: {fileID: 0}
     - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
+      propertyPath: comfortChange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045225831177067827, guid: 842e5c2fa6a19be4abadc7546cf8ff6f, type: 3}
       propertyPath: happinessChange
       value: 4
       objectReference: {fileID: 0}
@@ -23344,7 +23352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219062765582653015, guid: 1850bdd3dbba0544e8f7e872edefd8cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6302988530574137589, guid: 1850bdd3dbba0544e8f7e872edefd8cf, type: 3}
       propertyPath: m_LocalPosition.x

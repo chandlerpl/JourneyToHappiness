@@ -28,7 +28,12 @@ public class Item : MonoBehaviour
         {
            
             GameManager.Instance.Comfort += comfortChange;
-            GameManager.Instance.Happiness += happinessChange;
+
+            if(happinessChange > 0) {
+                GameManager.Instance.Happiness += happinessChange;
+            } else {
+                GameManager.Instance.Happiness += happinessChange - (happinessChange * (GameManager.Instance.Comfort / 100.0f));
+            }
             GameManager.Instance.Balance -= cost;
             GameManager.Instance.Bills += billsChange;
             if (purchasedItemSound != null)
