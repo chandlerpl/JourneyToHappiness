@@ -1297,6 +1297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   box: {fileID: 1990574005}
+  player: {fileID: 488358157}
+  stopMovingNearPlayer: 3
 --- !u!195 &109460383
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1319,6 +1321,28 @@ NavMeshAgent:
   m_BaseOffset: 0.8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &109460384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109460381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f677c575fecd44f8137fbe59c10012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purchasedItemSound: {fileID: 0}
+  noMoneySound: {fileID: 0}
+  purchaseCost: Pet dog
+  cost: 0
+  happinessChange: 1
+  comfortChange: 0
+  billsChange: 0
+  showObjects: []
+  hideObjects: []
+  advanceCurrentDay: 0
 --- !u!136 &109460385
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1333,6 +1357,19 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: -0.2, z: 0}
+--- !u!65 &109460387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109460381}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &125127186 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8849731389708257275, guid: 22597bce03a2e564b8fd4c69c8e1e825, type: 3}
@@ -7334,7 +7371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.59
+      value: 17.53
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7342,11 +7379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.37
+      value: -18.39
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.005653655
+      value: -0.9992921
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7354,7 +7391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.999984
+      value: 0.03762163
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7366,7 +7403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 179.352
+      value: 355.688
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9298dcc78ae34c4aaa14ff373b822b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -23518,7 +23555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5219062765582653015, guid: 1850bdd3dbba0544e8f7e872edefd8cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219062765582653015, guid: 1850bdd3dbba0544e8f7e872edefd8cf, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     - target: {fileID: 6302988530574137589, guid: 1850bdd3dbba0544e8f7e872edefd8cf, type: 3}
       propertyPath: m_LocalPosition.x
