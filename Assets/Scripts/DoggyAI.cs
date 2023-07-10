@@ -8,8 +8,11 @@ public class DoggyAI : MonoBehaviour
 {
     [SerializeField]
     private BoundingBox box;
+    [SerializeField]
+    private Transform player;
+    [SerializeField]
+    private float stopMovingNearPlayer = 2.5f;
 
-    private Vector3 target;
     private NavMeshAgent agent;
 
     // Start is called before the first frame update
@@ -18,16 +21,26 @@ public class DoggyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    bool t = false;
     // Update is called once per frame
     void Update()
     {
         if(!agent.hasPath && !agent.pathPending) {
             agent.SetDestination(GenerateTarget());
         } else if (agent.remainingDistance < 1) {
-            agent.SetDestination(GenerateTarget());
+            StartCoroutine(StartMoving());
         }
         
+        if(Vector3.Distance(player.transform.position, transform.position) < stopMovingNearPlayer) {
+            agent.isStopped = true;
+        } else if(agent.isStopped) {
+            agent.isStopped = false;
+        }
+    }
+
+    private IEnumerator StartMoving() {
+        yield return new WaitForSeconds(Random.Range(1, 15));
+
+        agent.SetDestination(GenerateTarget());
     }
 
     private Vector3 GenerateTarget() {
