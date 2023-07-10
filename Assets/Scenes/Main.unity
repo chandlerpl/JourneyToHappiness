@@ -13655,7 +13655,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0cdad3d3f7825ae4295b6d3f6650fb90, type: 2}
     - target: {fileID: 919132149155446097, guid: 602a1996aa8a5ba4fb66cb3d887d7bbe, type: 3}
       propertyPath: m_Name
-      value: floorFull (9)
+      value: CEILING
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 602a1996aa8a5ba4fb66cb3d887d7bbe, type: 3}
       propertyPath: m_IsActive
