@@ -8,6 +8,22 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+[Serializable]
+public class EventSettings {
+    public string eventName;
+    public GameObject eventUI;
+    public int eventStartDate;
+    public int eventEndDate;
+    
+    public float comfortChange;
+    public float happinessChange;
+
+    public bool isRandom;
+
+    [HideInInspector]
+    public bool hasHadEvent;
+}
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -55,8 +71,6 @@ public class GameManager : MonoBehaviour
     
     [Header("Romance Section")]
     [SerializeField]
-    private float minimumStartDay = 5;
-    [SerializeField]
     private float dailyChance = 0.1f;
     [SerializeField]
     private float costToGoOut = 25f;
@@ -64,8 +78,9 @@ public class GameManager : MonoBehaviour
     private float happinessIncrease = 5f;
     [SerializeField] 
     private GameObject meetCoworker;
-    private bool _hadChanceToMeet = false;
     private bool _hasMet = false;
+
+    public List<EventSettings> eventSettings;
     
     private float _happiness;
     private float _comfort;
@@ -159,21 +174,28 @@ public class GameManager : MonoBehaviour
     {
         CurrentDay += 1;
         Balance -= Bills;
-
-        if (!_hadChanceToMeet && CurrentDay > minimumStartDay)
-        {
-            float val = Random.Range(0f, 1f);
-            if (val < dailyChance)
-            {
-                _hadChanceToMeet = true;
-                meetCoworker.SetActive(true);
-                PauseGame(false);
-            }
-        }
-        
+                
         if (CurrentDay > maxDays)
         {
             SceneManager.LoadScene(2);
+        }
+
+        foreach(EventSettings ev in eventSettings) {
+            if(!ev.hasHadEvent && CurrentDay >= ev.eventStartDate && CurrentDay < ev.eventEndDate) {
+                if(ev.isRandom) {
+                    float val = Random.Range(0f, 1f);
+                    if (val > dailyChance)
+                    {
+                        continue;
+                    }
+                }
+                
+                ev.hasHadEvent = true;
+                ev.eventUI.SetActive(true);
+                PauseGame(false);
+                Happiness += ev.happinessChange;
+                Comfort += ev.comfortChange;
+            }
         }
     }
 
@@ -206,11 +228,11 @@ public class GameManager : MonoBehaviour
         if (yes)
         {
             _hasMet = true;
+            Happiness += happinessIncrease;
+            Balance -= costToGoOut;
         }
         meetCoworker.SetActive(false);
         ResumeGame();
-        Happiness += happinessIncrease;
-        Balance -= costToGoOut;
     }
 
     public bool CheckControlScheme([CanBeNull] string deviceName = null)
