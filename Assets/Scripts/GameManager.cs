@@ -11,14 +11,19 @@ using Random = UnityEngine.Random;
 [Serializable]
 public class EventSettings {
     public string eventName;
-    public GameObject eventUI;
+    //public GameObject eventUI;
     public int eventStartDate;
     public int eventEndDate;
     
     public float comfortChange;
     public float happinessChange;
+    public float cost;
 
     public bool isRandom;
+    public string title;
+    public bool isContext;
+    public string confirmText  = "Yes";
+    public string declineText= "No";
 
     [HideInInspector]
     public bool hasHadEvent;
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float maxComfort;
     
-    [Header("Romance Section")]
+    [Header("Event Section")]
     [SerializeField]
     private float dailyChance = 0.1f;
     [SerializeField]
@@ -77,7 +82,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float happinessIncrease = 5f;
     [SerializeField] 
-    private GameObject meetCoworker;
+    private EventMenu contextMenu;
     private bool _hasMet = false;
 
     public List<EventSettings> eventSettings;
@@ -95,6 +100,8 @@ public class GameManager : MonoBehaviour
             _happiness = value;
             if (_happiness > maxHappiness)
                 _happiness = maxHappiness;
+            if(_happiness < 0) 
+                _happiness = 0;
             HappinessChanged?.Invoke(_happiness);
         }
     }
@@ -107,6 +114,8 @@ public class GameManager : MonoBehaviour
             _comfort = value;
             if (_comfort > maxComfort)
                 _comfort = maxComfort;
+            if (_comfort < 0)
+                _comfort = 0;
             ComfortChanged?.Invoke(_comfort);
         }
     }
@@ -191,10 +200,17 @@ public class GameManager : MonoBehaviour
                 }
                 
                 ev.hasHadEvent = true;
-                ev.eventUI.SetActive(true);
+                contextMenu.ShowMenu(ev.title, "", ev.isContext, ev.confirmText, ev.declineText, b => {
+                    if(b) {
+                        Happiness += ev.happinessChange;
+                        Comfort += ev.comfortChange;
+                        Balance -= ev.cost;
+                        ResumeGame();
+                    }
+                });
+                
+                //ev.eventUI.SetActive(true);
                 PauseGame(false);
-                Happiness += ev.happinessChange;
-                Comfort += ev.comfortChange;
             }
         }
     }
@@ -222,19 +238,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         gameUI.SetActive(true);
     }
-    
-    public void MeetCoworker(bool yes)
-    {
-        if (yes)
-        {
-            _hasMet = true;
-            Happiness += happinessIncrease;
-            Balance -= costToGoOut;
-        }
-        meetCoworker.SetActive(false);
-        ResumeGame();
-    }
-
+   
     public bool CheckControlScheme([CanBeNull] string deviceName = null)
     {
         deviceName ??= PlayerInput.currentControlScheme;
