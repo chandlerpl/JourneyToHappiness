@@ -34,12 +34,6 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
 
-    public static event Action<float> HappinessChanged;
-    public static event Action<float> ComfortChanged;
-    public static event Action<float> BalanceChanged;
-    public static event Action<float> BillsChanged;
-    public static event Action<int> CurrentDayChanged;
-
     [Header("Player Input")]
     [SerializeField]
     private PlayerInput input;
@@ -61,19 +55,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float maxDays = 30;
     
-    [SerializeField]
-    private float balance;
-    [SerializeField]
-    private float bills;
-    [SerializeField]
-    private float startingHappiness;
-    [SerializeField]
-    private float startingComfort;
-    [SerializeField]
-    private float maxHappiness;
-    [SerializeField]
-    private float maxComfort;
-    
     [Header("Event Section")]
     [SerializeField]
     private float dailyChance = 0.1f;
@@ -84,80 +65,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private EventMenu contextMenu;
     private bool _hasMet = false;
+    public bool HasMet { get => _hasMet; }
 
     public List<EventSettings> eventSettings;
-    
-    private float _happiness;
-    private float _comfort;
 
-    private int _currentDay = 1;
-    
-    public float Happiness
-    {
-        get => _happiness;
-        set
-        {
-            _happiness = value;
-            if (_happiness > maxHappiness)
-                _happiness = maxHappiness;
-            if(_happiness < 0) 
-                _happiness = 0;
-            HappinessChanged?.Invoke(_happiness);
-        }
-    }
-    
-    public float Comfort
-    {
-        get => _comfort;
-        set
-        {
-            _comfort = value;
-            if (_comfort > maxComfort)
-                _comfort = maxComfort;
-            if (_comfort < 0)
-                _comfort = 0;
-            ComfortChanged?.Invoke(_comfort);
-        }
-    }
-    
-    public float Balance
-    {
-        get => balance;
-        set
-        {
-            balance = value;
-            BalanceChanged?.Invoke(balance);
-        }
-    }
+    [SerializeField]
+    private ScoringSystem _happiness;
+    [SerializeField]
+    private ScoringSystem _comfort;
+    [SerializeField]
+    private ScoringSystem _balance;
+    [SerializeField]
+    private ScoringSystem _bills;
+    [SerializeField]
+    private ScoringSystem _day;
 
-    public float Bills
-    {
-        get => bills;
-        set
-        {
-            bills = value;
-            BillsChanged?.Invoke(bills);
-        }
-    }
-    
-    public bool HasMet
-    {
-        get => _hasMet;
-    }
-    
-    public float MaxHappiness { get => maxHappiness; }
-    
-    public float MaxComfort { get => maxComfort; }
-    
-    public int CurrentDay { 
-        get => _currentDay;
-        private set
-        {
-            _currentDay = value;
-            CurrentDayChanged?.Invoke(_currentDay);
-        }
-    }
-    
+    public ScoringSystem Happiness { get => _happiness; }
+    public ScoringSystem     Comfort { get => _comfort; }
+    public ScoringSystem Balance { get => _balance; }
+    public ScoringSystem Bills { get => _bills; }
+    public ScoringSystem Day { get => _day; }
     private void Awake()
     {
         if (_instance != null)
@@ -175,22 +102,20 @@ public class GameManager : MonoBehaviour
     private IEnumerator SetStartingValues()
     {
         yield return new WaitForFixedUpdate();
-        Happiness = startingHappiness;
-        Comfort = startingComfort;
     }
 
     public void AdvanceDay()
     {
-        CurrentDay += 1;
-        Balance -= Bills;
+        Day.Value += 1;
+        _balance.Value -= _bills;
                 
-        if (CurrentDay > maxDays)
+        if (Day > maxDays)
         {
             SceneManager.LoadScene(2);
         }
 
         foreach(EventSettings ev in eventSettings) {
-            if(!ev.hasHadEvent && CurrentDay >= ev.eventStartDate && CurrentDay < ev.eventEndDate) {
+            if(!ev.hasHadEvent && Day >= ev.eventStartDate && Day < ev.eventEndDate) {
                 if(ev.isRandom) {
                     float val = Random.Range(0f, 1f);
                     if (val > dailyChance)
@@ -202,9 +127,9 @@ public class GameManager : MonoBehaviour
                 ev.hasHadEvent = true;
                 contextMenu.ShowMenu(ev.title, "", ev.isContext, ev.confirmText, ev.declineText, b => {
                     if(b) {
-                        Happiness += ev.happinessChange;
-                        Comfort += ev.comfortChange;
-                        Balance -= ev.cost;
+                        Happiness.Value += ev.happinessChange;
+                        Comfort.Value += ev.comfortChange;
+                        Balance.Value -= ev.cost;
                         ResumeGame();
                     }
                 });

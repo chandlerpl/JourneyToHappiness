@@ -47,7 +47,7 @@ public class ItemPickup : MonoBehaviour
             action.performed += ResumeGame;
         }*/
     }
-
+    
     public void OnPause()
     {
         GameManager.Instance.PauseGame(true);

@@ -27,15 +27,15 @@ public class Item : MonoBehaviour
         if (GameManager.Instance.Balance - cost > 0)
         {
            
-            GameManager.Instance.Comfort += comfortChange;
+            GameManager.Instance.Comfort.Value += comfortChange;
 
             if(happinessChange > 0) {
-                GameManager.Instance.Happiness += happinessChange;
+                GameManager.Instance.Happiness.Value += happinessChange;
             } else {
-                GameManager.Instance.Happiness += happinessChange - (happinessChange * (GameManager.Instance.Comfort / 100.0f));
+                GameManager.Instance.Happiness.Value += happinessChange - (happinessChange * (GameManager.Instance.Comfort / 100.0f));
             }
-            GameManager.Instance.Balance -= cost;
-            GameManager.Instance.Bills += billsChange;
+            GameManager.Instance.Balance.Value -= cost;
+            GameManager.Instance.Bills.Value += billsChange;
             if (purchasedItemSound != null)
             {
                 purchasedItemSound.Play();
