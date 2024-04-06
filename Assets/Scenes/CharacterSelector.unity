@@ -10863,6 +10863,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278190080
       objectReference: {fileID: 0}
+    - target: {fileID: 8430704443783829524, guid: 9e1b7f0d3a419f24cbfb02b6174ee92c, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 8430704444836557208, guid: 9e1b7f0d3a419f24cbfb02b6174ee92c, type: 3}
       propertyPath: m_Name
       value: START
@@ -11675,7 +11679,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 705658bb455f5f7479fa5c025f9faa03, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fcf400f66adc6584194d3f9a0e021c66, type: 2}
+      objectReference: {fileID: 2100000, guid: d57a8503b5eb3574f947617150fa2bb3, type: 2}
     - target: {fileID: -7337984843794982428, guid: 705658bb455f5f7479fa5c025f9faa03, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -22191,6 +22195,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 9077926073120308842, guid: 62d258ece126f6d499ef6e99fe82fd6d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5937d20ac9725294cb895417484e28f4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23124,6 +23132,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.007
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6ae230d5d8ae5004597a941d599ddb7a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d57a8503b5eb3574f947617150fa2bb3, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6ae230d5d8ae5004597a941d599ddb7a, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae600a46664a58340a14701726c0ee27, type: 2}
     - target: {fileID: 919132149155446097, guid: 6ae230d5d8ae5004597a941d599ddb7a, type: 3}
       propertyPath: m_Name
       value: plantSmall2
