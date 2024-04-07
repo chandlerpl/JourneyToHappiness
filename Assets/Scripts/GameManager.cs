@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     private ScoringSystem _day;
 
     public ScoringSystem Happiness { get => _happiness; }
-    public ScoringSystem     Comfort { get => _comfort; }
+    public ScoringSystem Comfort { get => _comfort; }
     public ScoringSystem Balance { get => _balance; }
     public ScoringSystem Bills { get => _bills; }
     public ScoringSystem Day { get => _day; }

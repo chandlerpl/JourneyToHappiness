@@ -57,7 +57,7 @@ public class ItemPickup : MonoBehaviour
     {
         GameManager.Instance.ResumeGame();
     }
-    
+    /*
     public void OnCameraControl(InputValue context)
     {
         float val = context.Get<float>();
@@ -69,7 +69,7 @@ public class ItemPickup : MonoBehaviour
         {
             CameraController.Instance.MoveRight();
         }
-    }
+    }*/
     
     public void OnInteract()
     {

@@ -1861,13 +1861,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125805557}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.041236218, y: 0.9577848, z: -0.18209831, w: -0.21860503}
-  m_LocalPosition: {x: 19.064331, y: 6.6186466, z: -9.008873}
+  m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 0, y: 20.005, z: -23.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 305149959}
+  m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
 --- !u!114 &125805562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3816,6 +3816,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eccc43b0cc9eb574281b95b45b02a1e4, type: 3}
   m_PrefabInstance: {fileID: 303512199}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &305149958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 305149959}
+  - component: {fileID: 305149960}
+  m_Layer: 0
+  m_Name: CameraStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &305149959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305149958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 125805561}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &305149960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305149958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db529fcf72e42349823167e5709445b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 488358154}
+  cameraObj: {fileID: 125805557}
+  shouldPan: 1
+  panSpeed: 0.1
+  shouldTilt: 1
+  tiltSpeed: 0.1
+  shouldMove: 1
+  moveSpeed: 0.2
+  shouldScroll: 1
+  scrollSpeed: 0.01
 --- !u!1 &310914300
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,7 +4234,6 @@ GameObject:
   - component: {fileID: 366018509}
   - component: {fileID: 366018508}
   - component: {fileID: 366018507}
-  - component: {fileID: 366018506}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -4187,28 +4241,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &366018506
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366018505}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &366018507
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10504,7 +10536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &892260319
 Transform:
   m_ObjectHideFlags: 0
@@ -17972,7 +18004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 602a1996aa8a5ba4fb66cb3d887d7bbe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 602a1996aa8a5ba4fb66cb3d887d7bbe, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27385,7 +27417,7 @@ SceneRoots:
   - {fileID: 1361706357840641978}
   - {fileID: 1689165724}
   - {fileID: 53432107}
-  - {fileID: 125805561}
+  - {fileID: 305149959}
   - {fileID: 661852666}
   - {fileID: 860740239}
   - {fileID: 1928309842}
