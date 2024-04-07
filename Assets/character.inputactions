@@ -485,10 +485,10 @@
                 {
                     "name": "modifier",
                     "id": "83e1d024-d01a-4640-95f8-23488d3643e2",
-                    "path": "<Mouse>/middleButton",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "CameraMove",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -499,7 +499,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "KeyboardMouse",
                     "action": "CameraMove",
                     "isComposite": false,
                     "isPartOfComposite": true
