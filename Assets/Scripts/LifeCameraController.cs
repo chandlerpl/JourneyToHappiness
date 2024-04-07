@@ -39,7 +39,7 @@ public class LifeCameraController : MonoBehaviour
     {
         Vector2 data = obj.ReadValue<Vector2>();
 
-        float forward = data.y;
+        float forward = -data.y;
 
         cameraObj.transform.localPosition = cameraObj.transform.localPosition.normalized * (cameraObj.transform.localPosition.magnitude + (forward * scrollSpeed));
     }
